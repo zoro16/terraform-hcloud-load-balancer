@@ -18,10 +18,10 @@ variable "load_balancer_name" {
 variable "load_balancer_type" {
   description = "Type of the Load Balancer."
   type        = string
-  default     = null
+  default     = "lb11"
 
   validation {
-    condition     = contains(["lb11", "lb21", "lb31"], var.load_balancer_type) || var.load_balancer_type == null
+    condition     = contains(["lb11", "lb21", "lb31"], var.load_balancer_type)
     error_message = "Please enter a valid Load Balancer Type e.g. lb11, lb21, lb31"
   }
 }
@@ -29,10 +29,10 @@ variable "load_balancer_type" {
 variable "load_balancer_location" {
   description = "The location name of the Load Balancer. Require when no network_zone is set."
   type        = string
-  default     = null
+  default     = "nbg1-dc3"
 
   validation {
-    condition     = can(regex("(fsn|nbg|hel|ash|hil)[0-9]*", var.load_balancer_location)) || var.load_balancer_location == null
+    condition     = can(regex("(fsn|nbg|hel|ash|hil|sin)[0-9]*", var.load_balancer_location))
     error_message = "Must have a vaild location name e.g. nbg1, fsn1, hel1, ash or hil."
   }
 }
@@ -40,11 +40,11 @@ variable "load_balancer_location" {
 variable "load_balancer_network_zone" {
   description = "The Network Zone of the Load Balancer. Require when no location is set."
   type        = string
-  default     = ""
+  default     = "eu-central"
 
   validation {
-    condition     = contains(["eu-central", "us-west", "us-east"], var.load_balancer_network_zone) || length(var.load_balancer_network_zone) == 0
-    error_message = "Wrong Network zone. Please enter a valid Network Zone e.g. `eu-central`, `us-west`, `us-east`"
+    condition     = contains(["eu-central", "us-west", "us-east", "ap-southeast"], var.load_balancer_network_zone) || length(var.load_balancer_network_zone) == 0
+    error_message = "Wrong Network zone. Please enter a valid Network Zone e.g. `eu-central`, `us-west`, `us-east`, `ap-southeast`"
   }
 }
 
