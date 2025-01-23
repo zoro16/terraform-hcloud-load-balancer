@@ -12,6 +12,10 @@ resource "hcloud_load_balancer" "load_balancer" {
   network_zone       = var.load_balancer_network_zone
   labels             = var.load_balancer_labels
   delete_protection  = var.load_balancer_delete_protection
+
+  algorithm {
+    type = var.load_balancer_algorithm_type
+  }
 }
 
 

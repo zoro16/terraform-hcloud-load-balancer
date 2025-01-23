@@ -18,10 +18,10 @@ variable "load_balancer_name" {
 variable "load_balancer_type" {
   description = "Type of the Load Balancer."
   type        = string
-  default     = null
+  default     = "lb11"
 
   validation {
-    condition     = contains(["lb11", "lb21", "lb31"], var.load_balancer_type) || var.load_balancer_type == null
+    condition     = contains(["lb11", "lb21", "lb31"], var.load_balancer_type)
     error_message = "Please enter a valid Load Balancer Type e.g. lb11, lb21, lb31"
   }
 }
@@ -29,10 +29,10 @@ variable "load_balancer_type" {
 variable "load_balancer_location" {
   description = "The location name of the Load Balancer. Require when no network_zone is set."
   type        = string
-  default     = null
+  default     = "nbg1-dc3"
 
   validation {
-    condition     = can(regex("(fsn|nbg|hel|ash|hil)[0-9]*", var.load_balancer_location)) || var.load_balancer_location == null
+    condition     = can(regex("(fsn|nbg|hel|ash|hil|sin)[0-9]*", var.load_balancer_location))
     error_message = "Must have a vaild location name e.g. nbg1, fsn1, hel1, ash or hil."
   }
 }
@@ -40,29 +40,25 @@ variable "load_balancer_location" {
 variable "load_balancer_network_zone" {
   description = "The Network Zone of the Load Balancer. Require when no location is set."
   type        = string
-  default     = ""
+  default     = "eu-central"
 
   validation {
-    condition     = contains(["eu-central", "us-west", "us-east"], var.load_balancer_network_zone) || length(var.load_balancer_network_zone) == 0
-    error_message = "Wrong Network zone. Please enter a valid Network Zone e.g. `eu-central`, `us-west`, `us-east`"
+    condition     = contains(["eu-central", "us-west", "us-east", "ap-southeast"], var.load_balancer_network_zone) || length(var.load_balancer_network_zone) == 0
+    error_message = "Wrong Network zone. Please enter a valid Network Zone e.g. `eu-central`, `us-west`, `us-east`, `ap-southeast`"
   }
 }
 
-variable "load_balancer_algorithm" {
+variable "load_balancer_algorithm_type" {
   description = <<EOF
 Configuration of the algorithm the Load Balancer use.
 algorithm support the following fields:
     type - (Required, string) Type of the Load Balancer Algorithm. round_robin or least_connections
 EOF
-  type = object({
-    type = string
-  })
-  default = {
-    type = "round_robin"
-  }
+  type        = string
+  default     = "round_robin"
 
   validation {
-    condition     = contains(["round_robin", "least_connections"], var.load_balancer_algorithm.type)
+    condition     = contains(["round_robin", "least_connections"], var.load_balancer_algorithm_type)
     error_message = "Only `round_robin` and `least_connections` algorithms are supported. Please enter a valid algorithm."
   }
 }
