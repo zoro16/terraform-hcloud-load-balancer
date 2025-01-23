@@ -7,8 +7,8 @@ on:
       - master
 
 env:
-  TERRAFORM_DOCS_VERSION: v0.16.0
-  TFLINT_VERSION: v0.48.0
+  TERRAFORM_DOCS_VERSION: v0.19.0
+  TFLINT_VERSION: v0.55.0
 
 jobs:
   pre-commit:
