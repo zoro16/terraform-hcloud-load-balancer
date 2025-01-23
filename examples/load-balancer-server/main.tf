@@ -48,9 +48,7 @@ module "lb" {
   load_balancer_type     = "lb11"
   load_balancer_location = "nbg1"
   # load_balancer_network_zone = "eu-central"
-  load_balancer_algorithm = {
-    type = "least_connections"
-  }
+  load_balancer_algorithm_type    = "least_connections"
   load_balancer_delete_protection = false
   load_balancer_labels = {
     type        = "demo"

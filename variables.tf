@@ -48,21 +48,17 @@ variable "load_balancer_network_zone" {
   }
 }
 
-variable "load_balancer_algorithm" {
+variable "load_balancer_algorithm_type" {
   description = <<EOF
 Configuration of the algorithm the Load Balancer use.
 algorithm support the following fields:
     type - (Required, string) Type of the Load Balancer Algorithm. round_robin or least_connections
 EOF
-  type = object({
-    type = string
-  })
-  default = {
-    type = "round_robin"
-  }
+  type        = string
+  default     = "round_robin"
 
   validation {
-    condition     = contains(["round_robin", "least_connections"], var.load_balancer_algorithm.type)
+    condition     = contains(["round_robin", "least_connections"], var.load_balancer_algorithm_type)
     error_message = "Only `round_robin` and `least_connections` algorithms are supported. Please enter a valid algorithm."
   }
 }
