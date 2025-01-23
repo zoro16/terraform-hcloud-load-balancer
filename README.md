@@ -123,19 +123,19 @@ module "lb" {
 
 
 
-<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.2.0 |
-| <a name="requirement_hcloud"></a> [hcloud](#requirement\_hcloud) | >= 1.42.1 |
+| <a name="requirement_hcloud"></a> [hcloud](#requirement\_hcloud) | >= 1.49.1 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_hcloud"></a> [hcloud](#provider\_hcloud) | >= 1.42.1 |
+| <a name="provider_hcloud"></a> [hcloud](#provider\_hcloud) | >= 1.49.1 |
 
 ## Modules
 
@@ -158,7 +158,7 @@ No modules.
 | <a name="input_create_load_balancer_network"></a> [create\_load\_balancer\_network](#input\_create\_load\_balancer\_network) | Whether to create a Load Balancer Network or not. | `bool` | `false` | no |
 | <a name="input_create_load_balancer_service"></a> [create\_load\_balancer\_service](#input\_create\_load\_balancer\_service) | Whether to create a Load Balancer Service or not. | `bool` | `false` | no |
 | <a name="input_create_load_balancer_target"></a> [create\_load\_balancer\_target](#input\_create\_load\_balancer\_target) | Whether to create a Load Balancer Target or not. | `bool` | `false` | no |
-| <a name="input_load_balancer_algorithm"></a> [load\_balancer\_algorithm](#input\_load\_balancer\_algorithm) | Configuration of the algorithm the Load Balancer use.<br/>algorithm support the following fields:<br/>    type - (Required, string) Type of the Load Balancer Algorithm. round\_robin or least\_connections | <pre>object({<br/>    type = string<br/>  })</pre> | <pre>{<br/>  "type": "round_robin"<br/>}</pre> | no |
+| <a name="input_load_balancer_algorithm_type"></a> [load\_balancer\_algorithm\_type](#input\_load\_balancer\_algorithm\_type) | Configuration of the algorithm the Load Balancer use.<br/>algorithm support the following fields:<br/>    type - (Required, string) Type of the Load Balancer Algorithm. round\_robin or least\_connections | `string` | `"round_robin"` | no |
 | <a name="input_load_balancer_delete_protection"></a> [load\_balancer\_delete\_protection](#input\_load\_balancer\_delete\_protection) | Enable or disable delete protection. | `bool` | `false` | no |
 | <a name="input_load_balancer_labels"></a> [load\_balancer\_labels](#input\_load\_balancer\_labels) | User-defined labels (key-value pairs) should be created with. | `map(any)` | `{}` | no |
 | <a name="input_load_balancer_location"></a> [load\_balancer\_location](#input\_load\_balancer\_location) | The location name of the Load Balancer. Require when no network\_zone is set. | `string` | `null` | no |
@@ -214,4 +214,4 @@ No modules.
 | <a name="output_load_balancer_target_type"></a> [load\_balancer\_target\_type](#output\_load\_balancer\_target\_type) | Type of the target. Possible values `server`, `label_selector`, `ip`. |
 | <a name="output_load_balancer_target_use_private_ip"></a> [load\_balancer\_target\_use\_private\_ip](#output\_load\_balancer\_target\_use\_private\_ip) | Use the private IP to connect to Load Balancer targets. Only allowed if type is server or label\_selector. |
 | <a name="output_load_balancer_type"></a> [load\_balancer\_type](#output\_load\_balancer\_type) | Type of the Load Balancer. |
-<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!-- END_TF_DOCS -->

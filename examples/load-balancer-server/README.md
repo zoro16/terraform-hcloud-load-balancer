@@ -1,6 +1,6 @@
 # load-balancer-server
 
-<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 | Name | Version |
@@ -45,4 +45,4 @@ No resources.
 | <a name="output_load_balancer_location"></a> [load\_balancer\_location](#output\_load\_balancer\_location) | The location name of the Load Balancer. Require when no network\_zone is set. |
 | <a name="output_load_balancer_name"></a> [load\_balancer\_name](#output\_load\_balancer\_name) | Name of the Load Balancer. |
 | <a name="output_load_balancer_type"></a> [load\_balancer\_type](#output\_load\_balancer\_type) | Type of the Load Balancer. |
-<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!-- END_TF_DOCS -->
