@@ -130,7 +130,7 @@ output "load_balancer_target_use_private_ip" {
   value       = try(hcloud_load_balancer_target.lb_target[0].use_private_ip, hcloud_load_balancer_target.lb_target[*].use_private_ip)
 
   precondition {
-    condition     = (!contains(["server", "labels_selector"], var.load_balancer_target_type) && var.load_balancer_target_use_private_ip != null) ? false : true
+    condition     = (contains(["server", "labels_selector"], var.load_balancer_target_type) && var.load_balancer_target_use_private_ip != null) ? false : true
     error_message = "Only allowed if type is `server` or `label_selector`."
   }
 }

@@ -93,5 +93,28 @@ resource "hcloud_load_balancer_service" "lb_service" {
     }
   }
 
+  dynamic "health_check" {
+    for_each = var.load_balancer_service_health_check
 
+    content {
+      protocol = health_check.value.protocol
+      port     = health_check.value.port
+      interval = health_check.value.interval
+      timeout  = health_check.value.timeout
+      retries  = health_check.value.retries
+
+      dynamic "http" {
+        for_each = health_check.value.http
+
+        content {
+          domain       = http.value.domain
+          path         = http.value.path
+          response     = http.value.response
+          tls          = http.value.tls
+          status_codes = http.value.status_codes
+        }
+      }
+    }
+
+  }
 }
